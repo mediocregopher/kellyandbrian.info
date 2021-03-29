@@ -18,7 +18,8 @@ $accent: #CCC;
     min-height: 100%;
     background-color: $container-bg;
     color: #3E514F;
-    max-width: 800px;
+    max-width: 1000px;
+    padding: 0 100px;
 }
 
 .logo-row {
@@ -26,15 +27,15 @@ $accent: #CCC;
 
     img {
         max-width: 75vw;
+        width: 50%;
         padding: 2rem 0rem;
         margin: 0 4% 0 4%;
     }
 }
 
 .nav-row {
-
     text-align: center;
-    margin: 0 2rem;
+    margin: 0 2rem 2rem 2rem;
     background: linear-gradient(180deg,
         $container-bg calc(50% - 1px),
         $accent calc(50%),
@@ -55,3 +56,21 @@ $accent: #CCC;
     }
 }
 
+@font-face {
+  font-family: lato-light;
+  src: url(LatoLatin-Light.ttf);
+}
+
+h1 {
+    font-family: lato-light;
+    text-align: center;
+}
+
+.horiz-line {
+    background: linear-gradient(180deg,
+        $container-bg calc(50% - 1px),
+        $accent calc(50%),
+        $container-bg calc(50% + 1px)
+    );
+    margin-bottom: 2.5rem;
+}
