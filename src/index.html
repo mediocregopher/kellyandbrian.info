@@ -1,5 +1,40 @@
 ---
 layout: default
+preview_image_rows:
+  -
+    - file: 2.jpg
+      width: 6016
+      cols: six
+
+    - file: 3.jpg
+      width: 7360
+      cols: six
+
+  -
+    - file: 1.jpg
+      width: 4016
+      cols: four
+
+    - file: 8.jpg
+      width: 4912
+      cols: four
+
+    - file: 4.jpg
+      width: 4912
+      cols: four
+
+  -
+    - file: 6.jpg
+      width: 4016
+      cols: four
+
+    - file: 7.jpg
+      width: 4912
+      cols: four
+
+    - file: 5.jpg
+      width: 4016
+      cols: four
 ---
 
 <div class="row">
@@ -24,4 +59,26 @@ layout: default
 
 <div class="row">
   <div class="columns offset-by-two eight horiz-line">&nbsp;</div>
+</div>
+
+{% for row in page.preview_image_rows %}
+<div class="row preview-img-row">
+{% for img in row %}
+  <div class="columns {{img.cols}}">
+    {% include image.html dir="img/preview" file=img.file width=img.width %}
+  </div>
+{% endfor %}
+</div>
+{% endfor %}
+
+<div class="row">
+  <div class="columns offset-by-two eight horiz-line">&nbsp;</div>
+</div>
+
+<div class="row">
+  <div class="columns offset-by-two eight">
+    <p style="text-align: center">
+      Many, many more pictures coming soon!
+    </p>
+  </div>
 </div>

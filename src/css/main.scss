@@ -27,7 +27,7 @@ $accent: #CCC;
 
     img {
         max-width: 75vw;
-        width: 50%;
+        width: 35%;
         padding: 2rem 0rem;
         margin: 0 4% 0 4%;
     }
@@ -54,6 +54,10 @@ $accent: #CCC;
 
         background: $container-bg;
     }
+
+    button:hover {
+        text-decoration: underline;
+    }
 }
 
 @font-face {
@@ -72,5 +76,24 @@ h1 {
         $accent calc(50%),
         $container-bg calc(50% + 1px)
     );
+    line-height: 1px;
+    margin-bottom: 2.5rem;
+}
+
+.preview-img-row {
+    img {
+        width: 100%;
+        transition: transform .2s;
+    }
+
+    img:hover {
+        transform: scale(1.05);
+        box-shadow: 4px 4px 4px #AAA;
+    }
+
+    img:active {
+        transform: scale(0.95);
+    }
+
     margin-bottom: 2.5rem;
 }
