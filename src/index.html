@@ -1,41 +1,12 @@
 ---
 layout: default
-preview_image_rows:
-  -
-    - file: 2.jpg
-      width: 6016
-      cols: six
-
-    - file: 3.jpg
-      width: 7360
-      cols: six
-
-  -
-    - file: 1.jpg
-      width: 4016
-      cols: four
-
-    - file: 8.jpg
-      width: 4912
-      cols: four
-
-    - file: 4.jpg
-      width: 4912
-      cols: four
-
-  -
-    - file: 6.jpg
-      width: 4016
-      cols: four
-
-    - file: 7.jpg
-      width: 4912
-      cols: four
-
-    - file: 5.jpg
-      width: 4016
-      cols: four
 ---
+
+<div class="row top-img-row">
+  <div class="columns offset-by-two eight">
+    {% include img.html dir="img/preview" file="2.jpg" %}
+  </div>
+</div>
 
 <div class="row">
   <div class="columns offset-by-three six">
@@ -44,41 +15,21 @@ preview_image_rows:
 </div>
 
 <div class="row">
-  <div class="columns offset-by-two eight">
+  <div class="columns offset-by-two eight text-block">
     <p>
-      On February 22nd, 2021, Kelly Dutton and Brian Picciano tied the knot,
-      just off Beaver Creek Trail, on a sunny, snowy day in Evergreen, CO.
+      On Monday, February 22, 2021, Brian Picciano and Kelly Dutton, with just a
+      photographer present to witness, self-solemnized their marriage in
+      Evergreen, Colorado.
+    <p>
+    <p>
+      After a short hike to the middle of a snowy aspen grove off Beaver Creek
+      Trail, we said our self-written vows to each other, and finally became
+      husband and wife.
     </p>
     <p>
-      Our family is invited to visit the
-      <a href="reception.html">reception</a> page for more details on our
-      upcoming celebration in TODO.
-    </p>
-  </div>
-</div>
-
-<div class="row">
-  <div class="columns offset-by-two eight horiz-line">&nbsp;</div>
-</div>
-
-{% for row in page.preview_image_rows %}
-<div class="row preview-img-row">
-{% for img in row %}
-  <div class="columns {{img.cols}}">
-    {% include image.html dir="img/preview" file=img.file width=img.width %}
-  </div>
-{% endfor %}
-</div>
-{% endfor %}
-
-<div class="row">
-  <div class="columns offset-by-two eight horiz-line">&nbsp;</div>
-</div>
-
-<div class="row">
-  <div class="columns offset-by-two eight">
-    <p style="text-align: center">
-      Many, many more pictures coming soon!
-    </p>
+      The rest of the afternoon was spent traipsing around the forest, taking
+      pictures in the snow, laughing, crying, freezing, and, above all, being
+      endlessly grateful for each other.
+    <p>
   </div>
 </div>

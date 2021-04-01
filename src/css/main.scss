@@ -22,6 +22,14 @@ $accent: #CCC;
     padding: 0 100px;
 }
 
+.row {
+    .columns {
+        img {
+            width: 100%;
+        }
+    }
+}
+
 .logo-row {
     text-align: center;
 
@@ -60,14 +68,27 @@ $accent: #CCC;
     }
 }
 
+.top-img-row {
+    margin-bottom: 2.5rem;
+
+    img {
+        border-radius: 50%;
+    }
+}
+
 @font-face {
-  font-family: lato-light;
-  src: url(LatoLatin-Light.ttf);
+  font-family: authentic-signature;
+  src: url(authentic-signature.ttf);
 }
 
 h1 {
-    font-family: lato-light;
+    font-family: authentic-signature;
+    font-size: 7rem;
     text-align: center;
+}
+
+.text-block {
+    text-align: justify;
 }
 
 .horiz-line {
@@ -82,7 +103,6 @@ h1 {
 
 .preview-img-row {
     img {
-        width: 100%;
         transition: transform .2s;
     }
 
@@ -96,4 +116,17 @@ h1 {
     }
 
     margin-bottom: 2.5rem;
+}
+
+.sig-row {
+    padding-top: 10rem;
+
+    .columns {
+        text-align: center;
+        img {
+            width: 5rem;
+            margin-top: 1rem;
+            opacity: 0.75;
+        }
+    }
 }

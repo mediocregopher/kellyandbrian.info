@@ -10,11 +10,3 @@ defaults:
       path: ""
     values:
       layout: "post"
-
-img_widths:
-    - 500
-    - 1000
-    - 1500
-    - 2000
-    - 2500
-    - 3000

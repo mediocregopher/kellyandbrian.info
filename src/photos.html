@@ -1,0 +1,84 @@
+---
+layout: default
+preview_image_rows:
+  -
+    - file: a4.jpg
+      cols: six
+    - file: a7.jpg
+      cols: six
+
+    - file: a3.jpg
+      cols: twelve
+
+  -
+    - file: a5.jpg
+      cols: six
+    - file: a10.jpg
+      cols: six
+
+  -
+    - file: a11.jpg
+      cols: four
+    - file: a12.jpg
+      cols: four
+    - file: a13.jpg
+      cols: four
+
+  -
+    - file: a14.jpg
+      cols: six
+    - file: 3.jpg
+      cols: six
+
+  -
+    - file: 8.jpg
+      cols: four
+    - file: 1.jpg
+      cols: four
+    - file: a21.jpg
+      cols: four
+
+  -
+    - file: a17.jpg
+      cols: four
+    - file: a18.jpg
+      cols: four
+    - file: 5.jpg
+      cols: four
+
+  -
+    - file: a24.jpg
+      cols: twelve
+
+  -
+    - file: 6.jpg
+      cols: six
+    - file: 7.jpg
+      cols: six
+
+  -
+    - file: a29.jpg
+      cols: four
+    - file: a27.jpg
+      cols: four
+    - file: a28.jpg
+      cols: four
+---
+
+{% for row in page.preview_image_rows %}
+<div class="row preview-img-row">
+{% for img in row %}
+  <div class="columns {{img.cols}}">
+    {% include img.html dir="img/preview" file=img.file %}
+  </div>
+{% endfor %}
+</div>
+{% endfor %}
+
+<div class="row" style="margin: 5rem 0 2.5rem 0;">
+  <div class="columns offset-by-two eight">
+    <p style="text-align: center">
+      Check back soon for more photos!
+    </p>
+  </div>
+</div>
