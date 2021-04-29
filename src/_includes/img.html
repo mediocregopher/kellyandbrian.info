@@ -1,3 +1,8 @@
-<a href="{{ include.dir }}/{{ include.file }}" target="_blank">
-  <img src="{{ include.dir }}/1000px/{{ include.file }}" />
+<a href="{{ include.dir }}/{{ include.file }}"
+   target="_blank"
+   {% if include.class %}class="{{ include.class }}"{% endif %}
+   >
+  <img src="{{ include.dir }}/500px/{{ include.file }}"
+       loading="{{ include.loading | default: "auto" }}"
+       />
 </a>

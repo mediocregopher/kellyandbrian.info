@@ -4,21 +4,17 @@
 html {
     background: url(../img/bg.jpg) no-repeat center center fixed; 
     background-size: cover;
-    height: 100%;
-}
-
-body {
-    height: 100%;
 }
 
 $container-bg: #FFF;
 $accent: #CCC;
+$width: 800px;
 
 .container {
     min-height: 100%;
     background-color: $container-bg;
     color: #3E514F;
-    max-width: 1000px;
+    max-width: $width+200px;
     padding: 0 100px;
 }
 
@@ -101,23 +97,6 @@ h1 {
     margin-bottom: 2.5rem;
 }
 
-.preview-img-row {
-    img {
-        transition: transform .2s;
-    }
-
-    img:hover {
-        transform: scale(1.05);
-        box-shadow: 4px 4px 4px #AAA;
-    }
-
-    img:active {
-        transform: scale(0.95);
-    }
-
-    margin-bottom: 2.5rem;
-}
-
 .sig-row {
     padding-top: 10rem;
 
@@ -125,8 +104,56 @@ h1 {
         text-align: center;
         img {
             width: 5rem;
-            margin-top: 1rem;
             opacity: 0.75;
         }
     }
+
+    p,a {
+        color: #AAA;
+        margin: 0;
+    }
 }
+
+.img-row {
+    display: flex;
+    overflow: hidden;
+    flex-wrap: wrap;
+
+    a {
+        position: relative;
+        display: block;
+        height: 300px;
+        flex-grow: 1;
+        margin: 5px;
+
+        cursor: pointer;
+    }
+
+    img {
+        height: 300px;
+        object-fit: cover;
+        max-width: 200px;
+        min-width: 100%;
+        vertical-align: bottom;
+        transition: transform .2s;
+        z-index: 1;
+    }
+
+    img:hover {
+        transform: scale(.95);
+        //box-shadow: 4px 4px 4px #AAA;
+        z-index:2;
+    }
+
+    img:active {
+        transform: scale(0.9);
+    }
+}
+
+.img-row:after {
+    content: '';
+    flex-grow: 999999999;
+    min-width: 200px;
+    height: 0;
+}
+
