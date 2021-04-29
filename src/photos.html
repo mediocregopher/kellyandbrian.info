@@ -1,84 +1,123 @@
 ---
 layout: default
-preview_image_rows:
-  -
-    - file: a4.jpg
-      cols: six
-    - file: a7.jpg
-      cols: six
-
-    - file: a3.jpg
-      cols: twelve
-
-  -
-    - file: a5.jpg
-      cols: six
-    - file: a10.jpg
-      cols: six
-
-  -
-    - file: a11.jpg
-      cols: four
-    - file: a12.jpg
-      cols: four
-    - file: a13.jpg
-      cols: four
-
-  -
-    - file: a14.jpg
-      cols: six
-    - file: 3.jpg
-      cols: six
-
-  -
-    - file: 8.jpg
-      cols: four
-    - file: 1.jpg
-      cols: four
-    - file: a21.jpg
-      cols: four
-
-  -
-    - file: a17.jpg
-      cols: four
-    - file: a18.jpg
-      cols: four
-    - file: 5.jpg
-      cols: four
-
-  -
-    - file: a24.jpg
-      cols: twelve
-
-  -
-    - file: 6.jpg
-      cols: six
-    - file: 7.jpg
-      cols: six
-
-  -
-    - file: a29.jpg
-      cols: four
-    - file: a27.jpg
-      cols: four
-    - file: a28.jpg
-      cols: four
+photoswipe_path: deps/PhotoSwipe-4.1.3/dist
 ---
 
-{% for row in page.preview_image_rows %}
-<div class="row preview-img-row">
-{% for img in row %}
-  <div class="columns {{img.cols}}">
-    {% include img.html dir="img/preview" file=img.file %}
-  </div>
-{% endfor %}
-</div>
-{% endfor %}
+<link rel="stylesheet" href="{{ page.photoswipe_path }}/photoswipe.css">
+<link rel="stylesheet" href="{{ page.photoswipe_path }}/default-skin/default-skin.css"> 
+<script src="{{ page.photoswipe_path }}/photoswipe.min.js"></script> 
+<script src="{{ page.photoswipe_path }}/photoswipe-ui-default.min.js"></script>
 
-<div class="row" style="margin: 5rem 0 2.5rem 0;">
-  <div class="columns offset-by-two eight">
-    <p style="text-align: center">
-      Check back soon for more photos!
-    </p>
-  </div>
+<div class="row img-row">
+  {% for img in site.data.gallery.imgs %}
+  <a>
+    <img
+      src="img/gallery/{{ site.data.gallery.target_thumb_w }}px/{{ img.file }}"
+      width="{{ img.thumb_w }}"
+      height="{{ img.thumb_h }}"
+      loading=lazy
+      />
+  </a>
+  {% endfor %}
 </div>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+  <!-- Background of PhotoSwipe.
+    It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides. 
+        PhotoSwipe keeps only 3 of them in the DOM to save memory.
+        Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+          <div class="pswp__top-bar">
+
+            <!--  Controls are self-explanatory. Order can be changed. -->
+
+            <div class="pswp__counter"></div>
+
+            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+            <button class="pswp__button pswp__button--share" title="Share"></button>
+
+            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+            <div class="pswp__preloader">
+              <div class="pswp__preloader__icn">
+                <div class="pswp__preloader__cut">
+                  <div class="pswp__preloader__donut"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+            <div class="pswp__share-tooltip"></div> 
+          </div>
+
+          <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+          </button>
+
+          <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+          </button>
+
+          <div class="pswp__caption">
+            <div class="pswp__caption__center"></div>
+          </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+  const pswpElement = document.querySelectorAll('.pswp')[0];
+  const pswpItems = [
+      {% for img in site.data.gallery.imgs %}
+      {
+        src: 'img/gallery/{{ site.data.gallery.target_w }}px/{{ img.file }}',
+        w: {{ img.w }},
+        h: {{ img.h }},
+      },
+      {% endfor %}
+  ];
+
+
+  function launchGallery(index) {
+    const options = {
+      index: index,
+      shareEl: false,
+    };
+
+    // Initializes and opens PhotoSwipe
+    const gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, pswpItems, options);
+    gallery.init();
+  }
+
+  document.querySelectorAll('.img-row a').forEach((e, i) => {
+    e.onclick = () => { launchGallery(i); };
+  });
+
+  const currIndex = new URLSearchParams(new URL(window.location.href).hash.substring(1)).get('pid');
+  if (currIndex) {
+    launchGallery(currIndex);
+  }
+
+</script>
