@@ -20,3 +20,6 @@ lock:
 update:
 	nix-shell -p bundler -p bundix --run 'bundler update; bundler lock; bundix; rm -rf .bundle vendor'
 
+push: result
+	cd result/var/www/kellyandbrian.info
+	gsutil cp -r * gs://kellyandbrianinfo
